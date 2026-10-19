@@ -2,6 +2,10 @@
 
 Demostracion del estilo **MQTT** (Message Queuing Telemetry Transport) para la exposicion de estilos arquitectonicos de API.
 
+ Autores:
+- Jhojan Stiven Aragón Ramírez
+- Yader Ibraldo Quiroga Torres
+ - Kevin Emmanuel Tovar Lizarazo
 ## Que es MQTT (resumen)
 
 - **Modelo de comunicacion:** publicacion y suscripcion. Los clientes nunca hablan entre si; todos hablan con un **broker** (intermediario) que reenvia cada mensaje a quien este suscrito al **topico**.
@@ -25,7 +29,7 @@ publisher.py --PUBLISH saludos/hola-------------->  +-----------------+ --saludo
    - Con una sesion persistente, si el suscriptor esta apagado, el broker **guarda** los mensajes QoS 1/2 y **descarta** los QoS 0.
 5. Extra: un **mensaje retenido**, que un suscriptor nuevo recibe apenas se conecta.
 
-Cada pieza corre en un proceso separado.
+
 
 ## Requisitos previos
 
