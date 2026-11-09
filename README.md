@@ -40,7 +40,7 @@ publisher.py --PUBLISH saludos/hola-------------->  +-----------------+ --saludo
 ## Instalacion
 
 ```bash
-git clone https://github.com/kevintovar01/mqtt-hola-mundo.git
+git clone https://github.com/git-init-ud/mqtt-hola-mundo.git
 cd mqtt-hola-mundo
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -54,7 +54,6 @@ Dependencias:
 | --- | --- |
 | `paho-mqtt` | Cliente MQTT oficial de Eclipse; conecta, publica y se suscribe al broker. |
 | `python-dotenv` | Carga las variables del archivo `.env`, para no dejar direcciones ni puertos fijos en el codigo. |
-| `pytest` | Ejecuta las pruebas de integracion contra el broker. |
 
 ## Variables de entorno
 
@@ -129,18 +128,24 @@ python publisher.py --topic saludo --retain --message "Ultimo saludo"
 python subscriber.py --id sub-nuevo --topic "saludos/#"     # lo recibe al instante con retain=True
 ```
 
-## Pruebas
+## Presentación
 
-Con el broker encendido:
+- [Ver la presentación en Canva](https://canva.link/fo95adq8urtj65f)
+- [Descargar la presentación en PDF](./Slides/Protocolo%20MQTT.pdf)
 
-```bash
-pytest -v
-```
+## Fuentes
 
-| Prueba | Que comprueba |
-| --- | --- |
-| `test_greeting_reaches_only_matching_subscriber` | El enrutamiento por topico: el saludo llega a `saludos/#` y no a `sensores/+/temperatura` |
-| `test_offline_persistent_session_only_keeps_qos1_and_qos2[0/1/2]` | Con el suscriptor apagado, se pierden los mensajes QoS 0 y se entregan los QoS 1 y 2 |
-| `test_retained_message_delivered_to_late_subscriber` | Un suscriptor tardio recibe el mensaje retenido |
-
-Con MQTTX: conectarse a `localhost:1883`, suscribirse a `#` y ver todo el trafico, o publicar a mano en `saludos/hola`.
+1. HiveMQ Team. (2026, 9 de febrero). *[Introducing the MQTT Protocol -
+   MQTT Essentials: Part 1](https://www.hivemq.com/blog/mqtt-essentials-part-1-introducing-mqtt/)*.
+   HiveMQ Blog.
+2. HiveMQ Team. (2026, 9 de febrero). *[What is MQTT Quality of Service (QoS)
+   0, 1, & 2? - MQTT Essentials: Part 6](https://www.hivemq.com/blog/mqtt-essentials-part-6-mqtt-quality-of-service-levels/)*.
+   HiveMQ Blog.
+3. Eclipse Foundation. (2024). *[Client Module - Eclipse Paho MQTT Python
+   Documentation](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html)*.
+4. EMQ Technologies. (2026). *[MQTTX Documentation](https://mqttx.app/docs)*.
+5. OASIS. (2019). *[MQTT Version 5.0](https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html)*.
+6. AWS. (s. f.). *[Use AWS IoT Core MQTT broker with standard MQTT
+   libraries](https://aws.amazon.com/blogs/iot/use-aws-iot-core-mqtt-broker-with-standard-mqtt-libraries/)*.
+7. Anthropic. (s. f.). *[Claude](https://claude.ai/)*. Herramienta utilizada como
+   apoyo para la redacción y revisión del material.
